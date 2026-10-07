@@ -18,6 +18,7 @@ Generally speaking, the plugin will perform better on servers running Paper; mor
 
 </details>
 
+## Compatibility
 AreaForge has been compiled in Java 21 and officially tested in versions 1.20.5 – 1.21.11, the plugin should be compatible with any other version as long as the server running it uses Java 21 or similar.
 
 ## Configuration
