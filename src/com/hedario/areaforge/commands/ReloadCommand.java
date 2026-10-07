@@ -21,6 +21,9 @@ public class ReloadCommand extends AFCommand {
 
 	@Override
 	public void execute(CommandSender sender, List<String> args) {
+		if (!this.hasPermission(sender)) {
+			return;
+		}
 		Config config = ConfigManager.getDef();
 		try {
 			config.reload();

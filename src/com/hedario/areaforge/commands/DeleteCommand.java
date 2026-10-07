@@ -30,7 +30,7 @@ public class DeleteCommand extends AFCommand {
 
 	@Override
 	public void execute(final CommandSender sender, final List<String> args) {
-		if (!this.isCorrectLength(sender, 1, 1, args.size())) {
+		if (!this.hasPermission(sender) || !this.isCorrectLength(sender, 1, 1, args.size())) {
 			return;
 		}
 		final String name = args.get(0);
