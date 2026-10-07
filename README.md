@@ -1,9 +1,9 @@
 # AreaForge
 ![SpigotMC](https://img.shields.io/badge/platform-Spigot%20%7C%20Paper-yellow?style=flat-square)
 ![Made with 💙](https://img.shields.io/badge/Made%20with-%F0%9F%92%99-blue?style=flat-square)
-<img width="1200" height="550" alt="areaforge" src="https://github.com/user-attachments/assets/328e38e4-1066-4cd3-b579-5c56bb46b274" />
 
 AreaForge is a modern and standalone area management and restoration plugin developed to consolidate the functionalities of [AreaReloader](https://modrinth.com/plugin/areareloader) and [AreaReloader-FAWE](https://modrinth.com/plugin/areareloader-fawe) into a single solution.
+<img width="1200" height="550" alt="areaforge" src="https://github.com/user-attachments/assets/328e38e4-1066-4cd3-b579-5c56bb46b274" />
 
 The plugin is designed with cross-platform compatibility in mind, supporting both Spigot and Paper while providing version-specific implementations when possible.
 
@@ -18,6 +18,13 @@ Generally speaking, the plugin will perform better on servers running Paper; mor
 - 1.21.10
 
 </details>
+
+## Key features
+AreaForge allows area management by creating a copy of a selected area, restorable at any moment both manually and automatically, all at the ease of a wooden axe and a command!
+
+AreaForge doesn't stop at simple blocks restoration but allows to save and later load both entities and containers.
+
+The plugin finds its largest use in the restoration of pvp and pve arenas, as well as restoring limited event chests containing tresures.
 
 ## Compatibility
 AreaForge has been compiled in Java 21 and officially tested in versions 1.20.5 – 1.21.11, the plugin should be compatible with any other version as long as the server running it uses Java 21 or similar.
