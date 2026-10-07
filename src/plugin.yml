@@ -1,0 +1,10 @@
+name: AreaForge
+main: com.hedario.areaforge.AreaForge
+version: ${project.version}
+api-version: 1.21
+authors: ['Hedario']
+commands:
+  af:
+    usage: /<command>
+    aliases: [af, areaforge, area]
+    description: Default command.
