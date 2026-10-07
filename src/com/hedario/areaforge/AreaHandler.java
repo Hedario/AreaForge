@@ -1,7 +1,9 @@
 package com.hedario.areaforge;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import org.bukkit.Bukkit;
@@ -19,17 +21,19 @@ public class AreaHandler {
 
 	private final Map<String, AreaLoader> LOADER;
 	private final Map<String, AreaForger> FORGER;
+	private final List<Thread> POOL;
 	private float budget;
 	private long interval;
 	private BukkitTask task;
 	private RestoreEngine engine;
 
 	public AreaHandler() {
-		FORGER = new HashMap<String, AreaForger>();
-		LOADER = new HashMap<String, AreaLoader>();
+		this.FORGER = new HashMap<String, AreaForger>();
+		this.LOADER = new HashMap<String, AreaLoader>();
 		this.budget = (float) (ConfigManager.get().getDouble("Settings.Budget.Time") * 1000000000);
 		this.interval = ConfigManager.get().getLong("Settings.Budget.Interval") * 20;
 		this.engine = RestoreEngineProvider.create();
+		this.POOL = new ArrayList<Thread>();
 		task = Bukkit.getScheduler().runTaskTimer(AreaForge.getInstance(), this::loadAll, 1L, interval);
 	}
 
@@ -61,6 +65,27 @@ public class AreaHandler {
 			task.cancel();
 			task = null;
 		}
+	}
+	
+	public void clear() {
+		cancel();
+		LOADER.clear();
+		FORGER.values().forEach(f -> f.cancelTask());
+		FORGER.clear();
+		POOL.forEach(Thread::interrupt);
+		POOL.clear();
+	}
+
+	public void kill(final String name) {
+		AreaLoader loader = LOADER.get(name);
+		if (loader == null) {
+			return;
+		}
+		
+		Thread thread = loader.getWorker().getThread();
+		thread.interrupt();
+		POOL.remove(thread);
+		LOADER.remove(name);
 	}
 	
 	public void queue(final AreaLoader loader) {
@@ -113,5 +138,12 @@ public class AreaHandler {
 
 	public Map<String, AreaForger> getForger() {
 		return FORGER;
+	}
+
+	/**
+	 * @return the pool
+	 */
+	public List<Thread> getPool() {
+		return POOL;
 	}
 }

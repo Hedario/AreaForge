@@ -42,7 +42,7 @@ public class VersionCommand extends AFCommand {
 		discord.setHoverEvent(new HoverEvent(Action.SHOW_TEXT, openLink));
 		discord.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://discord.gg/yqs9UJs"));
 		github.setHoverEvent(new HoverEvent(Action.SHOW_TEXT, openLink));
-		github.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "http://www.paypal.me/Hetag1216"));
+		github.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://github.com/Hedario/AreaForge"));
 		text.addExtra(modrinth);
 		text.addExtra(" ");
 		text.addExtra(github);

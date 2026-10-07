@@ -85,7 +85,7 @@ public class SettingsCommand extends AFCommand {
 		AreaScheduler.setTime(area, value);
 		Methods.sendMessage(sender,
 				Methods.setPlaceholders(ConfigManager.get().getString("Language.Commands.Settings.Time"),
-						Map.of("%value%", value, "%area%", area)),
+						Map.of("%time%", value, "%area%", area)),
 				true);
 	}
 

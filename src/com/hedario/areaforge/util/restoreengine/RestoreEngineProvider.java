@@ -17,6 +17,7 @@ public final class RestoreEngineProvider {
 		}
 
 		switch (getVersion()) {
+		case "1.21.8":
 		case "1.21.10":
 			return new NMS_1_21_10();
 		default:

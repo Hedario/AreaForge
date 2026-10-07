@@ -70,6 +70,7 @@ public class AreaLoader {
 		}
 		try {
 			worker = new WorkerLoader(area, area.isSaveContainers(), area.isSaveEntities());
+			handler.getPool().add(worker.getThread());
 			worker.start();
 		} catch (NoSuchFileException e) {
 			fail(e);
@@ -151,6 +152,7 @@ public class AreaLoader {
 	}
 
 	public void complete() {
+		this.handler.getPool().remove(this.worker.getThread());
 		this.worker.stop();
 		long time = System.currentTimeMillis() - start;
 		Methods.sendMessage(sender, Methods.setPlaceholders(ConfigManager.get().getString("Language.Commands.Load.Complete"),
@@ -162,6 +164,7 @@ public class AreaLoader {
 	}
 
 	public void fail(final Exception ex) {
+		this.handler.getPool().remove(this.worker.getThread());
 		this.worker.stop();
 		handler.getLoader().remove(area.getName());
 		if (sender != null && sender instanceof Player player) {
@@ -193,5 +196,13 @@ public class AreaLoader {
 	
 	public Area getArea() {
 		return area;
+	}
+
+	public WorkerLoader getWorker() {
+		return worker;
+	}
+
+	public void setWorker(WorkerLoader worker) {
+		this.worker = worker;
 	}
 }

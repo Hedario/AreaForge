@@ -34,7 +34,7 @@ public class CancelCommand extends AFCommand {
 			return;
 		}
 		if (arg.equalsIgnoreCase("all")) {
-			handler.getLoader().clear();
+			handler.clear();
 			this.sendMessage(sender, ConfigManager.get().getString("Language.Commands.Cancel.Cancelled_all"));
 		} else {
 			if (!AreaRepository.getAreaNames().contains(arg)) {
@@ -45,7 +45,7 @@ public class CancelCommand extends AFCommand {
 				this.sendMessage(sender, Methods.setPlaceholder(ConfigManager.get().getString("Language.Commands.Cancel.Idle"), "%area%", arg));
 				return;
 			}
-			handler.getLoader().remove(arg);
+			handler.kill(arg);
 			this.sendMessage(sender, Methods.setPlaceholder(ConfigManager.get().getString("Language.Commands.Cancel.Cancelled_single"), "%area%", arg));
 		}
 	}

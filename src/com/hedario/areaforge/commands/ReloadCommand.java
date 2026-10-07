@@ -38,8 +38,7 @@ public class ReloadCommand extends AFCommand {
 			this.sendMessage(sender, "An invalid configuration was loaded for " + config.get().getName());
 			e.printStackTrace();
 		}
-		AreaForge.getInstance().getAreaHandler().cancel();
-		AreaForge.getInstance().getAreaHandler().getLoader().clear();
+		AreaForge.getInstance().getAreaHandler().clear();
 		AreaForge.getInstance().setAreaHandler(new AreaHandler());
 		AreaScheduler.cancelTask();
 		AreaScheduler.getAreas().clear();

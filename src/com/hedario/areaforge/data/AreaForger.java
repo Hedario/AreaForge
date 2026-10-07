@@ -83,6 +83,7 @@ public class AreaForger {
 		start = System.currentTimeMillis();
 		try {
 			this.worker = new WorkerForger(area, saveContainers, saveEntities);
+			this.handler.getPool().add(this.worker.getThread());
 			worker.start();
 		} catch (NoSuchFileException e) {
 			fail(e);
@@ -177,6 +178,7 @@ public class AreaForger {
 	}
 	
 	public void complete() {
+		this.handler.getPool().remove(this.worker.getThread());
 		this.worker.stop();
 		area.setBlocks(processed);
 		area.setSaveContainers(saveContainers);
@@ -193,6 +195,7 @@ public class AreaForger {
 	
 	public void fail(final Exception ex) {
 		cancelTask();
+		this.handler.getPool().remove(this.worker.getThread());
 		this.worker.stop();
 		try {
 			if (worker.getBlockWriter() != null) {
@@ -219,7 +222,7 @@ public class AreaForger {
 		ex.printStackTrace();
 	}
 	
-	private void cancelTask() {
+	public void cancelTask() {
 		if (task != null && !task.isCancelled()) {
 			task.cancel();
 			task = null;

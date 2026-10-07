@@ -12,6 +12,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import com.hedario.areaforge.AreaForge;
+import com.hedario.areaforge.AreaScheduler;
 import com.hedario.areaforge.Methods;
 import com.hedario.areaforge.configuration.ConfigManager;
 import com.hedario.areaforge.storage.AreaRepository;
@@ -102,6 +103,7 @@ public class DeleteCommand extends AFCommand {
 			return;
 		}
 		AreaRepository.delete(name);
+		AreaScheduler.getAreas().remove(name);
 		Methods.sendMessage(sender, Methods	.setPlaceholder(ConfigManager.get().getString("Language.Commands.Delete.Success"), "%area%", name), true);
 	}
 

@@ -54,7 +54,6 @@ public class WorkerForger {
 				}
 			} catch (InterruptedException e) {
 				Thread.currentThread().interrupt();
-				fail(e);
 				return;
 			} catch (IOException e) {
 				fail(e);

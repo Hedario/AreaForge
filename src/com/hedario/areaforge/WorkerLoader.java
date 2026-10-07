@@ -59,7 +59,6 @@ public class WorkerLoader {
 			loadBlocks();
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
-			e.printStackTrace();
 			return;
 		} catch (IOException e) {
 			Bukkit.getScheduler().runTask(AreaForge.getInstance(), () -> loader.fail(e));
@@ -71,7 +70,8 @@ public class WorkerLoader {
 			try {
 				Thread.sleep(10);
 			} catch (InterruptedException e) {
-				e.printStackTrace();
+				Thread.currentThread().interrupt();
+				return;
 			}
 		}
 
@@ -90,7 +90,6 @@ public class WorkerLoader {
 			return;
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
-			e.printStackTrace();
 			return;
 		}
 

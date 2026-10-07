@@ -11,8 +11,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 import com.hedario.areaforge.commands.AFExecutor;
 import com.hedario.areaforge.configuration.ConfigManager;
 import com.hedario.areaforge.storage.Database;
+import com.hedario.areaforge.util.PAPIExpansion;
 import com.hedario.areaforge.util.Selector;
-import com.hedario.areaforge.util.restoreengine.RestoreEngineProvider;
 
 public class AreaForge extends JavaPlugin {
 	private static Logger log;
@@ -25,6 +25,7 @@ public class AreaForge extends JavaPlugin {
 		log = getLogger();
 		log.info("Loading configurations...");
 		ConfigManager.init();
+		
 		log.info("Enabling selector listener...");
 		getServer().getPluginManager().registerEvents(new Selector(), instance);
 
@@ -35,11 +36,21 @@ public class AreaForge extends JavaPlugin {
 		handler = new AreaHandler();
 
 		log.info("Registering commands...");
-		log.info("Server version: " + RestoreEngineProvider.getVersion());
 		AFExecutor.init();
+		
+		log.info("Fetching for automatic areas...");
 		AreaScheduler.init();
 		
+		log.info("Setting up metrics...");
 		setMetrics();
+		
+		log.info("Setting PAPI...");
+		if (Bukkit.getPluginManager().getPlugin("PlaceHolderAPI") != null) {
+			log.info("PlaceHolderAPI succesfully hooked to AreaForge.");
+			new PAPIExpansion().register();
+		} else {
+			log.info("This server is not using PlaceHolderAPI, expansion will be disabled.");
+		}
 		Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "AreaForge has been succesfully enabled!");
 	}
 	
@@ -47,16 +58,18 @@ public class AreaForge extends JavaPlugin {
 		if (!ConfigManager.get().getBoolean("Settings.Metrics.Enabled")) {
 			return;
 		}
-		log.info("Setting up metrics...");
+		
 		int pluginId = 34556;
         Metrics metrics = new Metrics(this, pluginId);
-
-		// Optional: Add custom charts
 		metrics.addCustomChart(new SimplePie("chart_id", () -> "My value"));
 	}
 
 	public void onDisable() {
 		log.info("Disabling AreaForge...");
+		log.info("Shutting off " + handler.getPool().size() + " threads.");
+		log.info("Stopping " + handler.getLoader().size() + " area loads.");
+		log.info("Stopping " + handler.getForger().size() + " area creations.");
+		handler.clear();
 	}
 
 	public static AreaForge getInstance() {
