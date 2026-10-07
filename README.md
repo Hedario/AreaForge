@@ -1,6 +1,7 @@
 # AreaForge
 ![SpigotMC](https://img.shields.io/badge/platform-Spigot%20%7C%20Paper-yellow?style=flat-square)
 ![Made with 💙](https://img.shields.io/badge/Made%20with-%F0%9F%92%99-blue?style=flat-square)
+<img width="1200" height="550" alt="areaforge" src="https://github.com/user-attachments/assets/328e38e4-1066-4cd3-b579-5c56bb46b274" />
 
 AreaForge is a modern and standalone area management and restoration plugin developed to consolidate the functionalities of [AreaReloader](https://modrinth.com/plugin/areareloader) and [AreaReloader-FAWE](https://modrinth.com/plugin/areareloader-fawe) into a single solution.
 
