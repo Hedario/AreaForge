@@ -38,7 +38,7 @@ public class VersionCommand extends AFCommand {
 		text.addExtra(Methods.formatColors("&6Loading engine in use: &e" + AreaForge.getInstance().getAreaHandler().getEngine().getVersion() + "\n\n"));
 		text.addExtra(Methods.formatColors("&6Pages: "));
 		modrinth.setHoverEvent(new HoverEvent(Action.SHOW_TEXT, openLink));
-		modrinth.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://modrinth.com/project/area-forge"));
+		modrinth.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://modrinth.com/project/areaforge"));
 		discord.setHoverEvent(new HoverEvent(Action.SHOW_TEXT, openLink));
 		discord.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://discord.gg/yqs9UJs"));
 		github.setHoverEvent(new HoverEvent(Action.SHOW_TEXT, openLink));

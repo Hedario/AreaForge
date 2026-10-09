@@ -3,23 +3,24 @@ main: com.hedario.areaforge.AreaForge
 version: ${project.version}
 api-version: 1.21
 authors: ['Hedario']
+softdepend: ['PlaceHolderAPI']
 commands:
   af:
     usage: /<command>
     aliases: [af, areaforge, area]
     description: Default command.
-	permissions:
-	areaforge.command.admin: 
-	  default: op
-	  description: Access to all commands.
-	  children:
-	    areaforge.command.cancel: true
-		areaforge.command.list: true
-	    areaforge.command.create: true
-	    areaforge.command.load: true
-	    areaforge.command.delete: true
-	    areaforge.command.help: true
-	    areaforge.command.version: true
-	    areaforge.command.reload: true
-	    areaforge.command.info: true
-	    areaforge.command.settings: true
+permissions:
+  areaforge.command.admin: 
+    default: op
+    description: Access to all commands.
+    children:
+      areaforge.command.cancel: true
+      areaforge.command.list: true
+      areaforge.command.create: true
+      areaforge.command.load: true
+      areaforge.command.delete: true
+      areaforge.command.help: true
+      areaforge.command.version: true
+      areaforge.command.reload: true
+      areaforge.command.info: true
+      areaforge.command.settings: true

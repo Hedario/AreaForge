@@ -24,7 +24,7 @@ public class PAPIExpansion extends PlaceholderExpansion {
 			ScheduledArea running = AreaScheduler.getAreas().get(name);
 			if (running != null) {
 				long time = (running.getParsedTime() + running.getLastLoad()) - System.currentTimeMillis();
-				return Methods.formatColors("&6Next load: &7" + Methods.formatTime(time));
+				return Methods.formatTime(time);
 			}
 			return "Area is not automatically loading.";
 		} else if (params.startsWith("world_")) {

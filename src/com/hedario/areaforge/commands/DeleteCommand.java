@@ -25,7 +25,7 @@ import net.md_5.bungee.api.chat.TextComponent;
 public class DeleteCommand extends AFCommand {
 
 	public DeleteCommand() {
-		super("delete", "/af delete <name>", ConfigManager.get().getString("Language.Commands.Delete.Description"), new String[] { "delete", "del", "d" });
+		super("delete", "/af delete <area>", ConfigManager.get().getString("Language.Commands.Delete.Description"), new String[] { "delete", "del", "d" });
 	}
 
 	@Override

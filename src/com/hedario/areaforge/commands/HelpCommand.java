@@ -17,7 +17,7 @@ import net.md_5.bungee.api.chat.TextComponent;
 public class HelpCommand extends AFCommand {
 
 	public HelpCommand() {
-		super("help", "/af help <Page/Topic>", ConfigManager.get().getString("Language.Commands.Help.Description"), new String[] { "help", "h" });
+		super("help", "/af help [page, topic]", ConfigManager.get().getString("Language.Commands.Help.Description"), new String[] { "help", "h" });
 	}
 
 	@SuppressWarnings("deprecation")

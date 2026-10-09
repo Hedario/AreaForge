@@ -17,7 +17,7 @@ import com.hedario.areaforge.storage.AreaRepository;
 public class SettingsCommand extends AFCommand {
 
 	public SettingsCommand() {
-		super("settings", "/af settings", ConfigManager.get().getString("Language.Commands.Settings.Description"), new String[] { "settings", "s" });
+		super("settings", "/af settings <area> <auto_load, auto_time, location> <true/false, time, set>", ConfigManager.get().getString("Language.Commands.Settings.Description"), new String[] { "settings", "s" });
 	}
 
 	@Override
